@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4">
             <Link href="/" className="text-xl font-bold" scroll={false}>
-             RentHome
+             Vinnagam
             </Link>
           </div>
           <nav className="mb-4">

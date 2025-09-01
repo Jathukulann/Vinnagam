@@ -109,7 +109,7 @@ export const api = createApi({
         });
       },
     }),
-     getProperties: build.query<
+    getProperties: build.query<
       Property[],
       Partial<FiltersState> & { favoriteIds?: number[] }
     >({
@@ -145,10 +145,38 @@ export const api = createApi({
         });
       },
     }),
+
+    getProperty: build.query<Property, number>({
+      query: (id) => `properties/${id}`,
+      providesTags: (result, error, id) => [{ type: "PropertyDetails", id }],
+      async onQueryStarted(_, { queryFulfilled }) {
+        await withToast(queryFulfilled, {
+          error: "Failed to load property details.",
+        });
+      },
+    }),
+    
+     createApplication: build.mutation<Application, Partial<Application>>({
+      query: (body) => ({
+        url: `applications`,
+        method: "POST",
+        body: body,
+      }),
+      invalidatesTags: ["Applications"],
+      async onQueryStarted(_, { queryFulfilled }) {
+        await withToast(queryFulfilled, {
+          success: "Application created successfully!",
+          error: "Failed to create applications.",
+        });
+      },
+    }),
+
   }),
 });
 
 export const { useGetAuthUserQuery, useUpdateTenantSettingsMutation,
 useUpdateManagerSettingsMutation,
-useGetPropertiesQuery
+useGetPropertiesQuery,
+useGetPropertyQuery,
+useCreateApplicationMutation
  } = api;
