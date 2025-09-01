@@ -5,11 +5,11 @@ import { useAppDispatch, useAppSelector } from "@/state/redux";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 import FiltersBar from "./FiltersBar";
-// import FiltersFull from "./FiltersFull";
+import FiltersFull from "./FiltersFull";
 import { cleanParams } from "@/lib/utils";
 import { setFilters } from "@/state";
 import Map from "./Maps";
-// import Listings from "./Listings";
+import Listings from "./Listings";
 
 const SearchPage = () => {
   const searchParams = useSearchParams();
@@ -54,11 +54,11 @@ const SearchPage = () => {
               : "w-0 opacity-0 invisible"
           }`}
         >
-          {/* <FiltersFull /> */}
+          <FiltersFull />
         </div>
         <Map />
         <div className="basis-4/12 overflow-y-auto">
-          {/* <Listings /> */}
+          <Listings />
         </div>
       </div>
     </div>

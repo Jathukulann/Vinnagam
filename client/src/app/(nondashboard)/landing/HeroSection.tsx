@@ -2,8 +2,15 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 function HeroSection() {
+  const router = useRouter();
+
+  const handleBrowseClick = () => {
+    router.push('/search');
+  };
+
   return (
     <div className="relative h-screen">
       <Image
@@ -26,7 +33,7 @@ function HeroSection() {
                 <p className="text-xl text-white mb-8">Discover your ideal living space with us.</p>
                <div className="flex justify-center">
                    <button className="bg-secondary-600 text-white px-6 py-3 rounded-lg hover:bg-secondary-500 transition duration-300"
-                   onClick={() => {}}>
+                   onClick={handleBrowseClick}>
                        browse Houses
                    </button>
                </div>

@@ -16,13 +16,13 @@ const Map = () => {
     isLoading,
     isError,
   } = useGetPropertiesQuery(filters);
-
+  console.log("properties", properties);
   useEffect(() => {
     if (isLoading || isError || !properties) return;
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current!,
-      style: "mapbox://styles/majesticglue/cm6u301pq008b01sl7yk1cnvb",
+      style: "mapbox://styles/jathu/cmew5acpi006z01plgxqb22d5",
       center: filters.coordinates || [-74.5, 40],
       zoom: 9,
     });
@@ -84,5 +84,6 @@ const createPropertyMarker = (property: Property, map: mapboxgl.Map) => {
     .addTo(map);
   return marker;
 };
+
 
 export default Map;
